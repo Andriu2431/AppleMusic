@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "EC96273A-84B8-4B79-88FF-375B2F6F33DC"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "81291AA7-7C93-44F3-BC11-7B129D34676C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AppleMusic/NetworkService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "fetchTracks(searchText:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C2D08938-288B-45AB-9DE4-AFDFFB1F5EA9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AppleMusic/NetworkService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "fetchTracks(searchText:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C2D08938-288B-45AB-9DE4-AFDFFB1F5EA9 - 25166cd76f7bce05"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.CheckedContinuation&lt;AppleMusic.SearchResponse, Swift.Error&gt;) -&gt; () in AppleMusic.NetworkService.testAsyncFetch(text: Swift.String) async throws -&gt; AppleMusic.SearchResponse"
+                  moduleName = "AppleMusic"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrii.malyk/Desktop/AppleMusic/AppleMusic/NetworkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40"
+                  offsetFromSymbolStart = "173">
+               </Location>
+               <Location
+                  uuid = "C2D08938-288B-45AB-9DE4-AFDFFB1F5EA9 - b7f820ec26debea9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Foundation.Data, Alamofire.AFError&gt;) -&gt; () in closure #1 (Swift.CheckedContinuation&lt;AppleMusic.SearchResponse, Swift.Error&gt;) -&gt; () in AppleMusic.NetworkService.testAsyncFetch(text: Swift.String) async throws -&gt; AppleMusic.SearchResponse"
+                  moduleName = "AppleMusic"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrii.malyk/Desktop/AppleMusic/AppleMusic/NetworkService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "42"
+                  endingLineNumber = "42"
+                  offsetFromSymbolStart = "221">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4AEF47EB-9667-4A7C-AE8C-9E20B30CC6F3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AppleMusic/NetworkService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "fetchTracks(searchText:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4E4161BF-DA90-4CFA-B043-C6677B7B123A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AppleMusic/SearchViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "searchBar(_:textDidChange:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "4E4161BF-DA90-4CFA-B043-C6677B7B123A - 7abedcf97a8e2fe3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (__C.NSTimer) -&gt; () in AppleMusic.SearchViewController.searchBar(_: __C.UISearchBar, textDidChange: Swift.String) -&gt; ()"
+                  moduleName = "AppleMusic"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrii.malyk/Desktop/AppleMusic/AppleMusic/SearchViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "128">
+               </Location>
+               <Location
+                  uuid = "4E4161BF-DA90-4CFA-B043-C6677B7B123A - bc6f20c951ad6713"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable () async throws -&gt; () in closure #1 @Sendable (__C.NSTimer) -&gt; () in AppleMusic.SearchViewController.searchBar(_: __C.UISearchBar, textDidChange: Swift.String) -&gt; ()"
+                  moduleName = "AppleMusic"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrii.malyk/Desktop/AppleMusic/AppleMusic/SearchViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "71">
+               </Location>
+               <Location
+                  uuid = "4E4161BF-DA90-4CFA-B043-C6677B7B123A - b4d2027006b939b5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for closure #1 @Sendable () async throws -&gt; () in closure #1 @Sendable (__C.NSTimer) -&gt; () in AppleMusic.SearchViewController.searchBar(_: __C.UISearchBar, textDidChange: Swift.String) -&gt; ()"
+                  moduleName = "AppleMusic"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrii.malyk/Desktop/AppleMusic/AppleMusic/SearchViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "83">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "92A16CDB-4E28-4AC4-A12A-E8ED4629BDDF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AppleMusic/SearchViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "searchBar(_:textDidChange:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "92A16CDB-4E28-4AC4-A12A-E8ED4629BDDF - b4d2027006b9388f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for closure #1 @Sendable () async throws -&gt; () in closure #1 @Sendable (__C.NSTimer) -&gt; () in AppleMusic.SearchViewController.searchBar(_: __C.UISearchBar, textDidChange: Swift.String) -&gt; ()"
+                  moduleName = "AppleMusic"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrii.malyk/Desktop/AppleMusic/AppleMusic/SearchViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "115">
+               </Location>
+               <Location
+                  uuid = "92A16CDB-4E28-4AC4-A12A-E8ED4629BDDF - eef601140aee6a94"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for closure #1 @Sendable () async throws -&gt; () in closure #1 @Sendable (__C.NSTimer) -&gt; () in AppleMusic.SearchViewController.searchBar(_: __C.UISearchBar, textDidChange: Swift.String) -&gt; ()"
+                  moduleName = "AppleMusic"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrii.malyk/Desktop/AppleMusic/AppleMusic/SearchViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "59">
+               </Location>
+               <Location
+                  uuid = "92A16CDB-4E28-4AC4-A12A-E8ED4629BDDF - fe2116a17b7b94f9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async throws -&gt; () in closure #1 @Sendable (__C.NSTimer) -&gt; () in AppleMusic.SearchViewController.searchBar(_: __C.UISearchBar, textDidChange: Swift.String) -&gt; ()"
+                  moduleName = "AppleMusic"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrii.malyk/Desktop/AppleMusic/AppleMusic/SearchViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "76">
+               </Location>
+               <Location
+                  uuid = "92A16CDB-4E28-4AC4-A12A-E8ED4629BDDF - 62ffa179da9abafe"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for closure #1 @Sendable () async throws -&gt; () in closure #1 @Sendable (__C.NSTimer) -&gt; () in AppleMusic.SearchViewController.searchBar(_: __C.UISearchBar, textDidChange: Swift.String) -&gt; ()"
+                  moduleName = "AppleMusic"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrii.malyk/Desktop/AppleMusic/AppleMusic/SearchViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "42">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
