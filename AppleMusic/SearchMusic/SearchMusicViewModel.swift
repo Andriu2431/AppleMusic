@@ -16,16 +16,16 @@ class SearchMusicViewModel {
         tracks.count
     }
     
-    func getTrack(indexPath: IndexPath) -> Track {
-        tracks[indexPath.row]
-    }
-    
     func fetchTracks(searchText: String, complection: @escaping () -> ()) {
         Task {
             let result = try await networkService.getTracks(searchText: searchText)
             tracks = result.results
             complection()
         }
+    }
+    
+    func configureCellViewModel(indexPath: IndexPath) -> TrackCellViewModelProtocol {
+        TrackCellViewModel(track: tracks[indexPath.row])
     }
     
 }

@@ -21,6 +21,8 @@ class SearchMusicViewController: UIViewController {
         setupSearchBar()
         tableView.dataSource = self
         tableView.delegate = self
+        let nib = UINib(nibName: "TrackCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: TrackCell.reuseId)
     }
     
     private func setupSearchBar() {
@@ -32,16 +34,18 @@ class SearchMusicViewController: UIViewController {
 
 extension SearchMusicViewController: UITableViewDelegate, UITableViewDataSource {
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        84
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfRows()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let track = viewModel.getTrack(indexPath: indexPath)
-        cell.textLabel?.text = "\(track.trackName)\n\(track.artistName)"
-        cell.textLabel?.numberOfLines = 0
-        cell.imageView?.image = #imageLiteral(resourceName: "Image")
+        let cell = tableView.dequeueReusableCell(withIdentifier: TrackCell.reuseId, for: indexPath) as! TrackCell
+        let cellViewModel = viewModel.configureCellViewModel(indexPath: indexPath)
+        cell.viewModel = cellViewModel
         return cell
     }
 }
