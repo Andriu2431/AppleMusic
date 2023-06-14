@@ -9,6 +9,8 @@ import UIKit
 
 class LibraryMusicViewController: UIViewController {
 
+    let viewModel = LibraryMusicViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
