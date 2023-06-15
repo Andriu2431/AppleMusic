@@ -68,6 +68,14 @@ extension SearchMusicViewController: UITableViewDelegate, UITableViewDataSource 
         cell.viewModel = cellViewModel
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let window = UIApplication.shared.connectedScenes.compactMap { ($0 as? UIWindowScene)?.keyWindow }.last
+        let trackDetailsView = Bundle.main.loadNibNamed("TrackDetailView", owner: self)?.first as! TrackDetailView
+        let trackDetailViewModel = viewModel.configureTrackDetailViewModel(indexPath: indexPath)
+        trackDetailsView.viewModel = trackDetailViewModel
+        window?.addSubview(trackDetailsView)
+    }
 }
 
 //MARK: UISearchBarDelegate
