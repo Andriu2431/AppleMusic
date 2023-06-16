@@ -10,12 +10,12 @@ import Alamofire
 
 class SearchMusicViewController: UIViewController {
     
+    @IBOutlet weak var tableView: UITableView!
+    
     private var timer: Timer?
     private lazy var footerView = FooterView()
-    let searchController = UISearchController(searchResultsController: nil)
-    let viewModel = SearchMusicViewModel()
-    
-    @IBOutlet weak var tableView: UITableView!
+    private let searchController = UISearchController(searchResultsController: nil)
+    private let viewModel = SearchMusicViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
