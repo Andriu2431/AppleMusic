@@ -31,6 +31,7 @@ class TrackDetailView: UIView {
             trackImageView.sd_setImage(with: url)
             
             playTrack(previewUrl: viewModel.previewUrl)
+            observePlayerCurruntTime()
         }
     }
     
@@ -44,6 +45,7 @@ class TrackDetailView: UIView {
         super.awakeFromNib()
         
         trackImageView.backgroundColor = .gray
+        trackImageView.layer.cornerRadius = 10
     }
     
     private func playTrack(previewUrl: String?) {
@@ -52,6 +54,29 @@ class TrackDetailView: UIView {
         let playerItem = AVPlayerItem(url: url)
         player.replaceCurrentItem(with: playerItem)
         player.play()
+        changeScaleImageView()
+    }
+    
+    private func changeScaleImageView() {
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: .curveEaseOut) {
+            if self.player.timeControlStatus == .paused {
+                self.trackImageView.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
+            } else {
+                self.trackImageView.transform = .identity
+            }
+        }
+        
+    }
+    
+    private func observePlayerCurruntTime() {
+        let interval = CMTimeMake(value: 1, timescale: 2)
+        player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { [weak self] time in
+            self?.currentTimeLabel.text = time.toDispalyString()
+            
+            let durationTime = self?.player.currentItem?.duration
+            let currtentDurationTime = (durationTime ?? CMTimeMake(value: 1, timescale: 1)) - time
+            self?.durationLabel.text = "-\(currtentDurationTime.toDispalyString())"
+        }
     }
     
     // MARK: @IBAction
@@ -80,6 +105,7 @@ class TrackDetailView: UIView {
             player.pause()
             playPauseButton.setImage(UIImage(named: "play"), for: .normal)
         }
+        changeScaleImageView()
     }
     
     
