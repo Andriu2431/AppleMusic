@@ -76,7 +76,15 @@ class TrackDetailView: UIView {
             let durationTime = self?.player.currentItem?.duration
             let currtentDurationTime = (durationTime ?? CMTimeMake(value: 1, timescale: 1)) - time
             self?.durationLabel.text = "-\(currtentDurationTime.toDispalyString())"
+            
+            self?.updateCurrentTimeSlider()
         }
+    }
+    
+    private func updateCurrentTimeSlider() {
+        let currentTimeSecond = CMTimeGetSeconds(player.currentTime())
+        let durationSecons = CMTimeGetSeconds(player.currentItem?.duration ?? CMTimeMake(value: 1, timescale: 1))
+        self.currentTimeSlider.value = Float(currentTimeSecond / durationSecons)
     }
     
     // MARK: @IBAction
@@ -86,9 +94,17 @@ class TrackDetailView: UIView {
     }
     
     @IBAction func handleCurrentTimeSlider(_ sender: Any) {
+        guard let duartion = player.currentItem?.duration else { return }
+    
+        let durationInSeconds = CMTimeGetSeconds(duartion)
+        // так ми найдемо, де ми находимось по часу
+        let seekTimeInSeconds = Float64(currentTimeSlider.value) * durationInSeconds
+        let seekTime = CMTimeMakeWithSeconds(seekTimeInSeconds, preferredTimescale: 1)
+        player.seek(to: seekTime)
     }
     
     @IBAction func handleVolumeSlider(_ sender: Any) {
+        player.volume = volumeSlider.value
     }
     
     @IBAction func previousTrackButtonTapped(_ sender: Any) {
@@ -107,6 +123,4 @@ class TrackDetailView: UIView {
         }
         changeScaleImageView()
     }
-    
-    
 }
