@@ -24,6 +24,14 @@ class TrackDetailView: UIView {
     @IBOutlet weak var authorTitleLabel: UILabel!
     @IBOutlet weak var playPauseButton: UIButton!
     @IBOutlet weak var volumeSlider: CustomSlider!
+    @IBOutlet weak var maximizedStackView: UIStackView!
+    
+    @IBOutlet weak var miniTrackImageView: UIImageView!
+    @IBOutlet weak var miniPlayPauseButton: UIButton!
+    @IBOutlet weak var miniTrackTitleLabel: UILabel!
+    @IBOutlet weak var miniTrackView: UIView!
+    @IBOutlet weak var miniGoForwardButton: UIButton!
+    
     
     var viewModel: TrackDetailViewModelProtocol? {
         willSet(newViewModel) {
@@ -46,15 +54,18 @@ class TrackDetailView: UIView {
         
         trackImageView.backgroundColor = .gray
         trackImageView.layer.cornerRadius = 10
+        miniTrackImageView.layer.cornerRadius = 5
     }
     
     private func setupUI(_ viewModel: TrackDetailViewModelProtocol) {
+        miniTrackTitleLabel.text = viewModel.trackName
         trackTitleLabel.text = viewModel.trackName
         authorTitleLabel.text = viewModel.artistName
         
         // resize a photo with 100x100 on 600x600
         let url = URL(string: viewModel.artworkUrl100?.replacingOccurrences(of: "100x100", with: "600x600") ?? "")
         trackImageView.sd_setImage(with: url)
+        miniTrackImageView.sd_setImage(with: url)
         
         DispatchQueue.global(qos: .userInteractive).async { [weak self] in
             self?.playTrack(previewUrl: viewModel.previewUrl)
@@ -69,6 +80,9 @@ class TrackDetailView: UIView {
         player.replaceCurrentItem(with: playerItem)
         player.play()
         DispatchQueue.main.async { [weak self] in
+            self?.player.volume = self?.volumeSlider.value ?? 0
+            self?.playPauseButton.setImage(UIImage(named: "pause"), for: .normal)
+            self?.miniPlayPauseButton.setImage(UIImage(named: "pause"), for: .normal)
             self?.changeScaleImageView()
         }
     }
@@ -81,7 +95,6 @@ class TrackDetailView: UIView {
                 self.trackImageView.transform = .identity
             }
         }
-        
     }
     
     private func observePlayerCurruntTime() {
@@ -137,9 +150,11 @@ class TrackDetailView: UIView {
         if player.timeControlStatus == .paused {
             player.play()
             playPauseButton.setImage(UIImage(named: "pause"), for: .normal)
+            miniPlayPauseButton.setImage(UIImage(named: "pause"), for: .normal)
         } else {
             player.pause()
             playPauseButton.setImage(UIImage(named: "play"), for: .normal)
+            miniPlayPauseButton.setImage(UIImage(named: "play"), for: .normal)
         }
         changeScaleImageView()
     }

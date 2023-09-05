@@ -225,5 +225,148 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "62D09C6A-A192-473D-809A-88D2B6014BEA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AppleMusic/TabBar/MainTabBarController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "maximizeTrackDetailController(viewModel:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "62D09C6A-A192-473D-809A-88D2B6014BEA - 75be13972b19bbe"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AppleMusic.MainTabBarController.maximizeTrackDetailController(viewModel: AppleMusic.TrackDetailViewModelProtocol) -&gt; ()"
+                  moduleName = "AppleMusic"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrii.malyk/Desktop/AppleMusic/AppleMusic/TabBar/MainTabBarController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "80">
+               </Location>
+               <Location
+                  uuid = "62D09C6A-A192-473D-809A-88D2B6014BEA - 75be13972b19bdf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AppleMusic.MainTabBarController.maximizeTrackDetailController(viewModel: AppleMusic.TrackDetailViewModelProtocol) -&gt; ()"
+                  moduleName = "AppleMusic"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrii.malyk/Desktop/AppleMusic/AppleMusic/TabBar/MainTabBarController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "85"
+                  endingLineNumber = "85"
+                  offsetFromSymbolStart = "80">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "626C29D1-1FD8-40A6-BB04-64C378D7DA7C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AppleMusic/TrackDetailView/TrackDetailView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "setupUI(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FBECD22D-3944-4201-9241-0AC97B783699"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AppleMusic/TrackDetailView/TrackDetailView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "playTrack(previewUrl:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "FBECD22D-3944-4201-9241-0AC97B783699 - eea7c82949ecbc85"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AppleMusic.TrackDetailView.playTrack(previewUrl: Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "AppleMusic"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrii.malyk/Desktop/AppleMusic/AppleMusic/TrackDetailView/TrackDetailView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "77"
+                  endingLineNumber = "77"
+                  offsetFromSymbolStart = "328">
+               </Location>
+               <Location
+                  uuid = "FBECD22D-3944-4201-9241-0AC97B783699 - eea7c82949ecbc85"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AppleMusic.TrackDetailView.playTrack(previewUrl: Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "AppleMusic"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrii.malyk/Desktop/AppleMusic/AppleMusic/TrackDetailView/TrackDetailView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "77"
+                  endingLineNumber = "77"
+                  offsetFromSymbolStart = "512">
+               </Location>
+               <Location
+                  uuid = "FBECD22D-3944-4201-9241-0AC97B783699 - eea7c82949ecbc85"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AppleMusic.TrackDetailView.playTrack(previewUrl: Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "AppleMusic"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrii.malyk/Desktop/AppleMusic/AppleMusic/TrackDetailView/TrackDetailView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "77"
+                  endingLineNumber = "77"
+                  offsetFromSymbolStart = "1168">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "26FDD97B-F87B-4C8D-8472-FEC998E41A41"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AppleMusic/TabBar/MainTabBarController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "maximizeTrackDetailController(viewModel:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

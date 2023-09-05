@@ -26,6 +26,11 @@ class TrackCell: UITableViewCell {
         }
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        trackImageView.layer.cornerRadius = 5
+    }
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         trackImageView.image = nil
