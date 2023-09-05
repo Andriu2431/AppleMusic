@@ -33,6 +33,7 @@ class TrackDetailView: UIView {
     }
     
     weak var delegate: TrackMovingDelegate?
+    weak var tabBarDelegate: MainTabBarControllerDelegate?
     
     private let player: AVPlayer = {
        let avPlayer = AVPlayer()
@@ -105,7 +106,7 @@ class TrackDetailView: UIView {
     // MARK: @IBAction
     
     @IBAction func dragDownButtonTapped(_ sender: Any) {
-        self.removeFromSuperview()
+        tabBarDelegate?.minimizeTrackDetailController()
     }
     
     @IBAction func handleCurrentTimeSlider(_ sender: Any) {

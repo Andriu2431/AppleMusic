@@ -129,7 +129,7 @@
                                         <constraint firstAttribute="height" constant="17" id="thf-18-gR2"/>
                                     </constraints>
                                 </imageView>
-                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Eq4-Vk-aXh" customClass="CustomSlider" customModule="AppleMusic" customModuleProvider="target">
+                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="2" translatesAutoresizingMaskIntoConstraints="NO" id="Eq4-Vk-aXh" customClass="CustomSlider" customModule="AppleMusic" customModuleProvider="target">
                                     <rect key="frame" x="25" y="0.0" width="283" height="18"/>
                                     <color key="minimumTrackTintColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="maximumTrackTintColor" systemColor="systemGray3Color"/>

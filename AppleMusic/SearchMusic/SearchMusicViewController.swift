@@ -15,6 +15,7 @@ class SearchMusicViewController: UIViewController {
     private lazy var footerView = FooterView()
     private let searchController = UISearchController(searchResultsController: nil)
     private let viewModel = SearchMusicViewModel()
+    weak var tabBarDelegate: MainTabBarControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,12 +70,8 @@ extension SearchMusicViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let window = UIApplication.shared.connectedScenes.compactMap { ($0 as? UIWindowScene)?.keyWindow }.last
-        let trackDetailView = Bundle.main.loadNibNamed("TrackDetailView", owner: self)?.first as! TrackDetailView
         let trackDetailViewModel = viewModel.configureTrackDetailViewModel(indexPath: indexPath)
-        trackDetailView.delegate = self
-        trackDetailView.viewModel = trackDetailViewModel
-        window?.addSubview(trackDetailView)
+        self.tabBarDelegate?.maximizeTrackDetailController(viewModel: trackDetailViewModel)
     }
 }
 

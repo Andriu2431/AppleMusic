@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1637A4F32AA71F20002C2FE2 /* Nib + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1637A4F22AA71F20002C2FE2 /* Nib + Extension.swift */; };
 		16C4BA032A36FD100034F7C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C4BA022A36FD100034F7C1 /* AppDelegate.swift */; };
 		16C4BA052A36FD100034F7C1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C4BA042A36FD100034F7C1 /* SceneDelegate.swift */; };
 		16C4BA072A36FD100034F7C1 /* LibraryMusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C4BA062A36FD100034F7C1 /* LibraryMusicViewController.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1637A4F22AA71F20002C2FE2 /* Nib + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nib + Extension.swift"; sourceTree = "<group>"; };
 		16C4B9FF2A36FD100034F7C1 /* AppleMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppleMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16C4BA022A36FD100034F7C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		16C4BA042A36FD100034F7C1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 			children = (
 				16C4BA592A38B11F0034F7C1 /* UIViewController + Storyboard.swift */,
 				16C4BB2F2A4061B20034F7C1 /* CMTime + Extension.swift */,
+				1637A4F22AA71F20002C2FE2 /* Nib + Extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				16C4BA622A39CFF70034F7C1 /* TrackCell.swift in Sources */,
 				16C4BA032A36FD100034F7C1 /* AppDelegate.swift in Sources */,
 				16C4BA722A3B364B0034F7C1 /* TrackDetailViewModel.swift in Sources */,
+				1637A4F32AA71F20002C2FE2 /* Nib + Extension.swift in Sources */,
 				16C4BA172A36FD850034F7C1 /* MainTabBarController.swift in Sources */,
 				16C4BA662A39D0D00034F7C1 /* TrackCellViewModelProtocol.swift in Sources */,
 				16C4BA052A36FD100034F7C1 /* SceneDelegate.swift in Sources */,
