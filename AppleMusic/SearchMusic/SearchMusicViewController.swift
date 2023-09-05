@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Alamofire
 
 class SearchMusicViewController: UIViewController {
     
@@ -64,17 +63,18 @@ extension SearchMusicViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TrackCell.reuseId, for: indexPath) as! TrackCell
-        let cellViewModel = viewModel.configureCellViewModel(indexPath: indexPath)
+        let cellViewModel = viewModel.configureTrackCellViewModel(indexPath: indexPath)
         cell.viewModel = cellViewModel
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let window = UIApplication.shared.connectedScenes.compactMap { ($0 as? UIWindowScene)?.keyWindow }.last
-        let trackDetailsView = Bundle.main.loadNibNamed("TrackDetailView", owner: self)?.first as! TrackDetailView
+        let trackDetailView = Bundle.main.loadNibNamed("TrackDetailView", owner: self)?.first as! TrackDetailView
         let trackDetailViewModel = viewModel.configureTrackDetailViewModel(indexPath: indexPath)
-        trackDetailsView.viewModel = trackDetailViewModel
-        window?.addSubview(trackDetailsView)
+        trackDetailView.delegate = self
+        trackDetailView.viewModel = trackDetailViewModel
+        window?.addSubview(trackDetailView)
     }
 }
 
@@ -93,5 +93,45 @@ extension SearchMusicViewController: UISearchBarDelegate {
                 }
             })
         })
+    }
+}
+
+//MARK: TrackMovingDelegate
+
+extension SearchMusicViewController: TrackMovingDelegate {
+    func moveBackForPreviousTrack() -> TrackDetailViewModelProtocol? {
+        getBackTrackViewModel()
+    }
+    
+    func moveForwardForPreviousTrack() -> TrackDetailViewModelProtocol? {
+        getForwardTrackViewModel()
+    }
+    
+    private func getBackTrackViewModel() -> TrackDetailViewModelProtocol? {
+        guard let currentIndexPath = tableView.indexPathForSelectedRow else { return nil }
+        var backIndexPath = IndexPath(row: currentIndexPath.row - 1, section: currentIndexPath.section)
+        
+        tableView.deselectRow(at: currentIndexPath, animated: true)
+        
+        if currentIndexPath.row == 0 {
+            backIndexPath.row = viewModel.numberOfRows() - 1
+        }
+        
+        tableView.selectRow(at: backIndexPath, animated: true, scrollPosition: .none)
+        return viewModel.configureTrackDetailViewModel(indexPath: backIndexPath)
+    }
+    
+    private func getForwardTrackViewModel() -> TrackDetailViewModelProtocol? {
+        guard let currentIndexPath = tableView.indexPathForSelectedRow else { return nil }
+        var forwardIndexPath = IndexPath(row: currentIndexPath.row + 1, section: currentIndexPath.section)
+        
+        tableView.deselectRow(at: currentIndexPath, animated: true)
+        
+        if forwardIndexPath.row == viewModel.numberOfRows() {
+            forwardIndexPath.row = 0
+        }
+        
+        tableView.selectRow(at: forwardIndexPath, animated: true, scrollPosition: .none)
+        return viewModel.configureTrackDetailViewModel(indexPath: forwardIndexPath)
     }
 }

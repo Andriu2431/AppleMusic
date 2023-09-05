@@ -24,7 +24,7 @@ class SearchMusicViewModel {
         }
     }
     
-    func configureCellViewModel(indexPath: IndexPath) -> TrackCellViewModelProtocol {
+    func configureTrackCellViewModel(indexPath: IndexPath) -> TrackCellViewModelProtocol {
         TrackCellViewModel(track: tracks[indexPath.row])
     }
     

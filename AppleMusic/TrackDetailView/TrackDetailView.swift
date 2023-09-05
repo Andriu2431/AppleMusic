@@ -9,31 +9,30 @@ import UIKit
 import SDWebImage
 import AVKit
 
+protocol TrackMovingDelegate: AnyObject {
+    func moveBackForPreviousTrack() -> TrackDetailViewModelProtocol?
+    func moveForwardForPreviousTrack() -> TrackDetailViewModelProtocol?
+}
+
 class TrackDetailView: UIView {
     
     @IBOutlet weak var trackImageView: UIImageView!
-    @IBOutlet weak var currentTimeSlider: UISlider!
+    @IBOutlet weak var currentTimeSlider: CustomSlider!
     @IBOutlet weak var currentTimeLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var trackTitleLabel: UILabel!
     @IBOutlet weak var authorTitleLabel: UILabel!
     @IBOutlet weak var playPauseButton: UIButton!
-    @IBOutlet weak var volumeSlider: UISlider!
+    @IBOutlet weak var volumeSlider: CustomSlider!
     
     var viewModel: TrackDetailViewModelProtocol? {
         willSet(newViewModel) {
             guard let viewModel = newViewModel else { return }
-            trackTitleLabel.text = viewModel.trackName
-            authorTitleLabel.text = viewModel.artistName
-            
-            // resize a photo with 100x100 on 600x600
-            let url = URL(string: viewModel.artworkUrl100?.replacingOccurrences(of: "100x100", with: "600x600") ?? "")
-            trackImageView.sd_setImage(with: url)
-            
-            playTrack(previewUrl: viewModel.previewUrl)
-            observePlayerCurruntTime()
+            setupUI(viewModel)
         }
     }
+    
+    weak var delegate: TrackMovingDelegate?
     
     private let player: AVPlayer = {
        let avPlayer = AVPlayer()
@@ -48,13 +47,29 @@ class TrackDetailView: UIView {
         trackImageView.layer.cornerRadius = 10
     }
     
+    private func setupUI(_ viewModel: TrackDetailViewModelProtocol) {
+        trackTitleLabel.text = viewModel.trackName
+        authorTitleLabel.text = viewModel.artistName
+        
+        // resize a photo with 100x100 on 600x600
+        let url = URL(string: viewModel.artworkUrl100?.replacingOccurrences(of: "100x100", with: "600x600") ?? "")
+        trackImageView.sd_setImage(with: url)
+        
+        DispatchQueue.global(qos: .userInteractive).async { [weak self] in
+            self?.playTrack(previewUrl: viewModel.previewUrl)
+        }
+        observePlayerCurruntTime()
+    }
+    
     private func playTrack(previewUrl: String?) {
         guard let url = URL(string: previewUrl ?? "") else { return }
         
         let playerItem = AVPlayerItem(url: url)
         player.replaceCurrentItem(with: playerItem)
         player.play()
-        changeScaleImageView()
+        DispatchQueue.main.async { [weak self] in
+            self?.changeScaleImageView()
+        }
     }
     
     private func changeScaleImageView() {
@@ -108,9 +123,13 @@ class TrackDetailView: UIView {
     }
     
     @IBAction func previousTrackButtonTapped(_ sender: Any) {
+        let newViewModel = delegate?.moveBackForPreviousTrack()
+        self.viewModel = newViewModel
     }
     
     @IBAction func nextTrackButtonTapped(_ sender: Any) {
+        let newViewModel = delegate?.moveForwardForPreviousTrack()
+        self.viewModel = newViewModel
     }
     
     @IBAction func playPauseButtonTapped(_ sender: Any) {
