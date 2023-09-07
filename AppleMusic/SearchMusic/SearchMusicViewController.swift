@@ -21,6 +21,11 @@ class SearchMusicViewController: UIViewController {
         super.viewDidLoad()
         setupSearchBar()
         setupTableView()
+        viewModel.fetchTracks(searchText: "Top") { [weak self] in
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        }
     }
     
     private func setupTableView() {

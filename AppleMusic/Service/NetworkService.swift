@@ -12,7 +12,7 @@ class NetworkService {
     
     func getTracks(searchText: String) async throws -> SearchResponse {
         let stringUrl = "https://itunes.apple.com/search"
-        let parameters = ["term": "\(searchText)", "limit": "10", "media":"music"]
+        let parameters = ["term": "\(searchText)", "limit": "30", "media":"music"]
         
         return try await withCheckedThrowingContinuation({ continuation in
             AF.request(stringUrl, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseData { response in

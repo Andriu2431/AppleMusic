@@ -104,12 +104,17 @@
                             <subviews>
                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="yZe-5c-XNy" customClass="CustomSlider" customModule="AppleMusic" customModuleProvider="target">
                                     <rect key="frame" x="-2" y="0.0" width="337" height="31"/>
+                                    <color key="tintColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="maximumTrackTintColor" systemColor="systemGray3Color"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="trackHeight">
                                             <real key="value" value="10"/>
                                         </userDefinedRuntimeAttribute>
                                         <userDefinedRuntimeAttribute type="number" keyPath="thumbRadius">
-                                            <real key="value" value="0.0"/>
+                                            <real key="value" value="10"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="thumbCollor">
+                                            <color key="value" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                     <connections>
@@ -165,10 +170,10 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZhP-j1-58c">
-                                    <rect key="frame" x="111" y="56.333333333333258" width="111" height="57"/>
+                                    <rect key="frame" x="111" y="55.333333333333258" width="111" height="59"/>
                                     <color key="tintColor" systemColor="labelColor"/>
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                    <state key="normal" image="pause"/>
+                                    <state key="normal" image="play"/>
                                     <connections>
                                         <action selector="playPauseButtonTapped:" destination="QUN-Jg-MhN" eventType="touchUpInside" id="u3d-Jk-bgk"/>
                                     </connections>
@@ -196,6 +201,7 @@
                                 </imageView>
                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Eq4-Vk-aXh" customClass="CustomSlider" customModule="AppleMusic" customModuleProvider="target">
                                     <rect key="frame" x="25" y="0.0" width="283" height="18"/>
+                                    <color key="tintColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="minimumTrackTintColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="maximumTrackTintColor" systemColor="systemGray3Color"/>
                                     <userDefinedRuntimeAttributes>
@@ -203,7 +209,10 @@
                                             <real key="value" value="10"/>
                                         </userDefinedRuntimeAttribute>
                                         <userDefinedRuntimeAttribute type="number" keyPath="thumbRadius">
-                                            <real key="value" value="0.0"/>
+                                            <real key="value" value="10"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="thumbCollor">
+                                            <color key="value" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                     <connections>
@@ -260,6 +269,7 @@
         <image name="Left" width="34" height="20"/>
         <image name="Right" width="34" height="20"/>
         <image name="pause" width="57" height="57"/>
+        <image name="play" width="59" height="59"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

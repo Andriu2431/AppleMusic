@@ -51,10 +51,12 @@ class TrackDetailView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        setupGestures()
         trackImageView.backgroundColor = .gray
         trackImageView.layer.cornerRadius = 10
         miniTrackImageView.layer.cornerRadius = 5
+        
+        miniPlayPauseButton.imageEdgeInsets = UIEdgeInsets(top: 11, left: 11, bottom: 11, right: 11)
     }
     
     private func setupUI(_ viewModel: TrackDetailViewModelProtocol) {
@@ -114,6 +116,79 @@ class TrackDetailView: UIView {
         let currentTimeSecond = CMTimeGetSeconds(player.currentTime())
         let durationSecons = CMTimeGetSeconds(player.currentItem?.duration ?? CMTimeMake(value: 1, timescale: 1))
         self.currentTimeSlider.value = Float(currentTimeSecond / durationSecons)
+    }
+    
+    // MARK: GestureRecognizer
+    
+    private func setupGestures() {
+        miniTrackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openTapMaximizedView)))
+        miniTrackView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(openPanMaximizedView)))
+        self.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(clousePanMaximizedView)))
+    }
+    
+    @objc private func openTapMaximizedView() {
+        self.tabBarDelegate?.maximizeTrackDetailController(viewModel: nil)
+    }
+    
+    @objc private func openPanMaximizedView(gesture: UIPanGestureRecognizer) {
+        switch gesture.state {
+        case .changed:
+            handlePanChanged(gesture: gesture)
+        case .ended:
+            handlePanEnded(gesture: gesture)
+        default:
+            print("default")
+        }
+    }
+    
+    private func handlePanChanged(gesture: UIPanGestureRecognizer) {
+        let translation = gesture.translation(in: self.superview)
+        self.transform = CGAffineTransform(translationX: 0, y: translation.y)
+        
+        let newAlpha = 1 + translation.y / 200
+        self.miniTrackView.alpha = newAlpha < 0 ? 0 : newAlpha
+        self.maximizedStackView.alpha = -translation.y / 200
+    }
+    
+    private func handlePanEnded(gesture: UIPanGestureRecognizer) {
+        let translation = gesture.translation(in: self.superview)
+        let velocity = gesture.velocity(in: self.superview)
+        
+        UIView.animate(withDuration: 0.5,
+                       delay: 0,
+                       usingSpringWithDamping: 0.7,
+                       initialSpringVelocity: 1,
+                       options: .curveEaseOut) {
+            self.transform = .identity
+            if translation.y < -300 || velocity.y < -500 {
+                self.tabBarDelegate?.maximizeTrackDetailController(viewModel: nil)
+            } else {
+                self.miniTrackView.alpha = 1
+                self.maximizedStackView.alpha = 0
+            }
+        }
+    }
+    
+    @objc private func clousePanMaximizedView(gesture: UIPanGestureRecognizer) {
+        let translation = gesture.translation(in: self.superview)
+        
+        switch gesture.state {
+        case .changed:
+            self.transform = CGAffineTransform(translationX: 0, y: translation.y)
+        case .ended:
+            UIView.animate(withDuration: 0.5,
+                           delay: 0,
+                           usingSpringWithDamping: 0.7,
+                           initialSpringVelocity: 1,
+                           options: .curveEaseOut) {
+                self.transform = .identity
+                if translation.y > 50 {
+                    self.tabBarDelegate?.minimizeTrackDetailController()
+                }
+            }
+        default :
+            print("Default")
+        }
     }
     
     // MARK: @IBAction

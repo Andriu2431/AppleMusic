@@ -9,7 +9,7 @@ import UIKit
 
 protocol MainTabBarControllerDelegate: AnyObject {
     func minimizeTrackDetailController()
-    func maximizeTrackDetailController(viewModel: TrackDetailViewModelProtocol)
+    func maximizeTrackDetailController(viewModel: TrackDetailViewModelProtocol?)
 }
 
 class MainTabBarController: UITabBarController {
@@ -84,9 +84,9 @@ extension MainTabBarController: MainTabBarControllerDelegate {
         })
     }
     
-    func maximizeTrackDetailController(viewModel: TrackDetailViewModelProtocol) {
-        maximizedTopAnchorConstraint.isActive = true
+    func maximizeTrackDetailController(viewModel: TrackDetailViewModelProtocol?) {
         minimizedTopAnchorConstraint.isActive = false
+        maximizedTopAnchorConstraint.isActive = true
         maximizedTopAnchorConstraint.constant = 0
         bottomAnchorConstraint.constant = 0
         
