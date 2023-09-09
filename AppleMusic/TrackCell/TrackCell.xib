@@ -40,9 +40,20 @@
                         <color key="textColor" red="0.4941176471" green="0.4941176471" blue="0.52156862749999999" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dqw-f0-xKR">
+                        <rect key="frame" x="353" y="34" width="16" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <color key="tintColor" red="0.94117647059999998" green="0.26274509800000001" blue="0.45098039220000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" image="Add"/>
+                        <connections>
+                            <action selector="addTrackTapped:" destination="NoS-bf-k9a" eventType="touchUpInside" id="pUK-mc-cCY"/>
+                        </connections>
+                    </button>
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="addTrackButton" destination="Dqw-f0-xKR" id="s7e-Pp-ouj"/>
                 <outlet property="artistNameLabel" destination="P8t-6L-NTj" id="Yw9-NN-6pV"/>
                 <outlet property="collectionNameLabel" destination="BIt-J0-0LC" id="tc2-Pr-y38"/>
                 <outlet property="trackImageView" destination="EJo-82-gmP" id="9F8-LD-rjf"/>
@@ -51,4 +62,7 @@
             <point key="canvasLocation" x="139.69465648854961" y="20.422535211267608"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="Add" width="16" height="16"/>
+    </resources>
 </document>

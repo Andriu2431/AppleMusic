@@ -12,9 +12,12 @@ class SearchMusicViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     private var timer: Timer?
-    private lazy var footerView = FooterView()
     private let searchController = UISearchController(searchResultsController: nil)
     private let viewModel = SearchMusicViewModel()
+    
+    private lazy var footerView = FooterView()
+    private lazy var dataMenager = DataMenager()
+    
     weak var tabBarDelegate: MainTabBarControllerDelegate?
     
     override func viewDidLoad() {
@@ -70,6 +73,7 @@ extension SearchMusicViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TrackCell.reuseId, for: indexPath) as! TrackCell
         let cellViewModel = viewModel.configureTrackCellViewModel(indexPath: indexPath)
+        cell.delegate = self
         cell.viewModel = cellViewModel
         return cell
     }
@@ -135,5 +139,18 @@ extension SearchMusicViewController: TrackMovingDelegate {
         
         tableView.selectRow(at: forwardIndexPath, animated: true, scrollPosition: .none)
         return viewModel.configureTrackDetailViewModel(indexPath: forwardIndexPath)
+    }
+}
+
+extension SearchMusicViewController: TrackCellDelegate {
+    
+    func setDataForUserDefaults(cell: UITableViewCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        let track = viewModel.getTrack(indexPath)
+        dataMenager.set(track)
+    }
+    
+    func getSavedTracks() -> [Track] {
+        dataMenager.getSavedTracks()
     }
 }
