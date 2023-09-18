@@ -10,6 +10,7 @@
 		1637A4F32AA71F20002C2FE2 /* Nib + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1637A4F22AA71F20002C2FE2 /* Nib + Extension.swift */; };
 		1637A4F72AA9C41C002C2FE2 /* LibraryMusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1637A4F62AA9C41C002C2FE2 /* LibraryMusicView.swift */; };
 		1637A4F92AAA178B002C2FE2 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1637A4F82AAA178B002C2FE2 /* DataManager.swift */; };
+		1637A51C2AB08B96002C2FE2 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 1637A51B2AB08B96002C2FE2 /* URLImage */; };
 		16C4BA032A36FD100034F7C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C4BA022A36FD100034F7C1 /* AppDelegate.swift */; };
 		16C4BA052A36FD100034F7C1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C4BA042A36FD100034F7C1 /* SceneDelegate.swift */; };
 		16C4BA0A2A36FD100034F7C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16C4BA082A36FD100034F7C1 /* Main.storyboard */; };
@@ -77,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1637A51C2AB08B96002C2FE2 /* URLImage in Frameworks */,
 				725CF384C639C6D900E075AC /* Pods_AppleMusic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -252,6 +254,9 @@
 			dependencies = (
 			);
 			name = AppleMusic;
+			packageProductDependencies = (
+				1637A51B2AB08B96002C2FE2 /* URLImage */,
+			);
 			productName = AppleMusic;
 			productReference = 16C4B9FF2A36FD100034F7C1 /* AppleMusic.app */;
 			productType = "com.apple.product-type.application";
@@ -280,6 +285,9 @@
 				Base,
 			);
 			mainGroup = 16C4B9F62A36FD100034F7C1;
+			packageReferences = (
+				1637A51A2AB08B95002C2FE2 /* XCRemoteSwiftPackageReference "url-image" */,
+			);
 			productRefGroup = 16C4BA002A36FD100034F7C1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -592,6 +600,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1637A51A2AB08B95002C2FE2 /* XCRemoteSwiftPackageReference "url-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dmytro-anokhin/url-image";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1637A51B2AB08B96002C2FE2 /* URLImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1637A51A2AB08B95002C2FE2 /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 16C4B9F72A36FD100034F7C1 /* Project object */;
 }

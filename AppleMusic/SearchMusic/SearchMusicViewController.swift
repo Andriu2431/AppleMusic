@@ -16,7 +16,7 @@ class SearchMusicViewController: UIViewController {
     private let viewModel = SearchMusicViewModel()
     
     private lazy var footerView = FooterView()
-    private lazy var dataMenager = DataMenager()
+    private lazy var dataMenager = DataManager()
     
     weak var tabBarDelegate: MainTabBarControllerDelegate?
     

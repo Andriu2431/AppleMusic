@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import URLImage
 
 struct LibraryMusicView: View {
+    private let dataManager = DataManager()
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -37,10 +40,8 @@ struct LibraryMusicView: View {
                 .padding().frame(height: 50)
                 Divider().padding(EdgeInsets(top: 15, leading: 15, bottom: 0, trailing: 15))
                 
-                List {
-                    Section("All Music") {
-                        LibraryCell()
-                    }
+                List(dataManager.getSavedTracks()) { track in
+                    LibraryCell(track: track)
                 }
                 .listStyle(.insetGrouped)
             }
@@ -50,15 +51,21 @@ struct LibraryMusicView: View {
 }
 
 struct LibraryCell: View {
+    var track: Track
+    
     var body: some View {
         HStack {
-            Image("Image")
-                .resizable()
-                .frame(width: 60, height: 60)
-                .cornerRadius(5)
+            let url = URL(string: track.artworkUrl100 ?? "Image")
+            URLImage(url!) { image in
+                image
+                    .resizable()
+                    .cornerRadius(5)
+            }
+            .frame(width: 60, height: 60)
+
             VStack(alignment: .leading) {
-                Text("title")
-                Text("artist")
+                Text(track.trackName)
+                Text(track.artistName)
             }
         }
     }

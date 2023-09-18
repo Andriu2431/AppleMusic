@@ -7,7 +7,7 @@
 
 import Foundation
 
-class DataMenager {
+class DataManager {
     
     static let favouriteTrackKey = "favouriteTrackKey"
     let defaults = UserDefaults.standard
@@ -21,7 +21,7 @@ class DataMenager {
         
         do {
             let tracks = try JSONEncoder().encode(listOfTracks)
-            defaults.set(tracks, forKey: DataMenager.favouriteTrackKey)
+            defaults.set(tracks, forKey: DataManager.favouriteTrackKey)
         } catch let error {
             print(error.localizedDescription)
         }
@@ -30,7 +30,7 @@ class DataMenager {
     func getSavedTracks() -> [Track] {
         var savedTracks = [Track]()
         
-        if let data = defaults.data(forKey: DataMenager.favouriteTrackKey) {
+        if let data = defaults.data(forKey: DataManager.favouriteTrackKey) {
             do {
                 savedTracks = try JSONDecoder().decode([Track].self, from: data)
             } catch {
