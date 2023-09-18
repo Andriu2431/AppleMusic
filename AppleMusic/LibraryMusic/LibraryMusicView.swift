@@ -9,7 +9,7 @@ import SwiftUI
 import URLImage
 
 struct LibraryMusicView: View {
-    private let dataManager = DataManager()
+    let viewModel = LibraryMusicViewModel()
     
     var body: some View {
         NavigationView {
@@ -40,8 +40,11 @@ struct LibraryMusicView: View {
                 .padding().frame(height: 50)
                 Divider().padding(EdgeInsets(top: 15, leading: 15, bottom: 0, trailing: 15))
                 
-                List(dataManager.getSavedTracks()) { track in
-                    LibraryCell(track: track)
+                List() {
+                    ForEach(viewModel.tracks) { track in
+                        LibraryCell(track: track)
+                    }
+                    .onDelete(perform: viewModel.deleteSavedTrack(at:))
                 }
                 .listStyle(.insetGrouped)
             }

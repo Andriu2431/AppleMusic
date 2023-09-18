@@ -12,16 +12,22 @@ class DataManager {
     static let favouriteTrackKey = "favouriteTrackKey"
     let defaults = UserDefaults.standard
     
-    func set(_ track: Track) {
-        var listOfTracks = [Track]()
-        listOfTracks = getSavedTracks()
-        if !listOfTracks.contains(where: { $0.previewUrl == track.previewUrl }) {
-            listOfTracks.append(track)
+    func setTracks(_ tracks: [Track]) {
+        do {
+            let data = try JSONEncoder().encode(tracks)
+            defaults.set(data, forKey: DataManager.favouriteTrackKey)
+        } catch let error {
+            print(error.localizedDescription)
         }
+    }
+    
+    func appendNewTrack(_ track: Track) {
+        var listOfTracks = getSavedTracks()
+        listOfTracks.append(track)
         
         do {
-            let tracks = try JSONEncoder().encode(listOfTracks)
-            defaults.set(tracks, forKey: DataManager.favouriteTrackKey)
+            let data = try JSONEncoder().encode(listOfTracks)
+            defaults.set(data, forKey: DataManager.favouriteTrackKey)
         } catch let error {
             print(error.localizedDescription)
         }

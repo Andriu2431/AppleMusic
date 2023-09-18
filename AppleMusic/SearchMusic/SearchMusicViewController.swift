@@ -144,10 +144,10 @@ extension SearchMusicViewController: TrackMovingDelegate {
 
 extension SearchMusicViewController: TrackCellDelegate {
     
-    func setDataForUserDefaults(cell: UITableViewCell) {
+    func appendTrackForDataMaganer(cell: UITableViewCell) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         let track = viewModel.getTrack(indexPath)
-        dataMenager.set(track)
+        dataMenager.appendNewTrack(track)
     }
     
     func getSavedTracks() -> [Track] {
