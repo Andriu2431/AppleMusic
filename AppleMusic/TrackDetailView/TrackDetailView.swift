@@ -234,3 +234,11 @@ class TrackDetailView: UIView {
         changeScaleImageView()
     }
 }
+
+extension TrackDetailView: LibraryMusicViewDelegate {
+    
+    func muteMusic() {
+        self.volumeSlider.value = 0
+        self.player.volume = 0
+    }
+}

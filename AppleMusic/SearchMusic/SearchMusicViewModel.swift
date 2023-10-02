@@ -11,6 +11,8 @@ class SearchMusicViewModel {
     
     private var tracks = [Track]()
     private let networkService = NetworkService()
+    private let dataManager = DataManager()
+    private let trackModel = TrackModel.shared
     
     func numberOfRows() -> Int {
         tracks.count
@@ -24,10 +26,6 @@ class SearchMusicViewModel {
         }
     }
     
-    func getTrack(_ indexPath: IndexPath) -> Track {
-        tracks[indexPath.row]
-    }
-    
     func configureTrackCellViewModel(indexPath: IndexPath) -> TrackCellViewModelProtocol {
         TrackCellViewModel(track: tracks[indexPath.row])
     }
@@ -36,4 +34,12 @@ class SearchMusicViewModel {
         TrackDetailViewModel(track: tracks[indexPath.row])
     }
     
+    func appendTrackToTrackModel(_ indexPath: IndexPath) {
+        let track = tracks[indexPath.row]
+        trackModel.appendTrack(track)
+    }
+    
+    func getSavedTracks() -> [Track] {
+        dataManager.getSavedTracks()
+    }
 }

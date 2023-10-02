@@ -13,10 +13,8 @@ class SearchMusicViewController: UIViewController {
     
     private var timer: Timer?
     private let searchController = UISearchController(searchResultsController: nil)
-    private let viewModel = SearchMusicViewModel()
-    
     private lazy var footerView = FooterView()
-    private lazy var dataMenager = DataManager()
+    private let viewModel = SearchMusicViewModel()
     
     weak var tabBarDelegate: MainTabBarControllerDelegate?
     
@@ -29,6 +27,11 @@ class SearchMusicViewController: UIViewController {
                 self?.tableView.reloadData()
             }
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
     
     private func setupTableView() {
@@ -144,13 +147,12 @@ extension SearchMusicViewController: TrackMovingDelegate {
 
 extension SearchMusicViewController: TrackCellDelegate {
     
-    func appendTrackForDataMaganer(cell: UITableViewCell) {
+    func saveNewTrack(cell: UITableViewCell) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
-        let track = viewModel.getTrack(indexPath)
-        dataMenager.appendNewTrack(track)
+        viewModel.appendTrackToTrackModel(indexPath)
     }
     
     func getSavedTracks() -> [Track] {
-        dataMenager.getSavedTracks()
+        viewModel.getSavedTracks()
     }
 }

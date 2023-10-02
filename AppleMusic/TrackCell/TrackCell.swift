@@ -9,7 +9,7 @@ import UIKit
 import SDWebImage
 
 protocol TrackCellDelegate: AnyObject {
-    func appendTrackForDataMaganer(cell: UITableViewCell)
+    func saveNewTrack(cell: UITableViewCell)
     func getSavedTracks() -> [Track]
 }
 
@@ -57,7 +57,7 @@ class TrackCell: UITableViewCell {
     }
     
     @IBAction func addTrackTapped(_ sender: Any) {
-        delegate?.appendTrackForDataMaganer(cell: self)
+        delegate?.saveNewTrack(cell: self)
         addTrackButton.isHidden = true
     }
 }

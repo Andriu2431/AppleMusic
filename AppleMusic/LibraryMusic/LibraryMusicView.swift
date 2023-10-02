@@ -7,9 +7,16 @@
 
 import SwiftUI
 import URLImage
+import AVKit
+
+protocol LibraryMusicViewDelegate: AnyObject {
+    func muteMusic()
+}
 
 struct LibraryMusicView: View {
-    let viewModel = LibraryMusicViewModel()
+    @ObservedObject var trackModel = TrackModel.shared
+    weak var tabBarDelegate: MainTabBarControllerDelegate?
+    weak var delegate: LibraryMusicViewDelegate?
     
     var body: some View {
         NavigationView {
@@ -17,7 +24,9 @@ struct LibraryMusicView: View {
                 GeometryReader { geomerty in
                     HStack(spacing: 20) {
                         Button {
-                            print("12345")
+                            if let track = trackModel.tracks.first {
+                                tabBarDelegate?.maximizeTrackDetailController(viewModel: TrackDetailViewModel(track: track))
+                            }
                         } label: {
                             Image(systemName: "play.fill")
                                 .frame(width: geomerty.size.width / 2 - 10, height: 50)
@@ -27,9 +36,9 @@ struct LibraryMusicView: View {
                         }
                         
                         Button {
-                            print("54321")
+                            delegate?.muteMusic()
                         } label: {
-                            Image(systemName: "arrow.2.circlepath")
+                            Image(systemName: "speaker.slash.fill")
                                 .frame(width: geomerty.size.width / 2 - 10, height: 50)
                                 .tint(Color.init(#colorLiteral(red: 1, green: 0.1719063818, blue: 0.4505617023, alpha: 1)))
                                 .background(Color.init((#colorLiteral(red: 0.9531342387, green: 0.9490900636, blue: 0.9562709928, alpha: 1))))
@@ -41,15 +50,19 @@ struct LibraryMusicView: View {
                 Divider().padding(EdgeInsets(top: 15, leading: 15, bottom: 0, trailing: 15))
                 
                 List() {
-                    ForEach(viewModel.tracks) { track in
+                    ForEach(trackModel.tracks) { track in
                         LibraryCell(track: track)
                     }
-                    .onDelete(perform: viewModel.deleteSavedTrack(at:))
+                    .onDelete(perform: deleteSavedTrack(at:))
                 }
                 .listStyle(.insetGrouped)
             }
             .navigationTitle("Library")
         }
+    }
+    
+    private func deleteSavedTrack(at offsets: IndexSet) {
+        trackModel.removeTrack(at: offsets)
     }
 }
 
