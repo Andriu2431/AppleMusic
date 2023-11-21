@@ -22,6 +22,12 @@ class TrackModel: ObservableObject {
         saveTracks()
     }
     
+    func removeTrack(_ track: Track) {
+        guard let index = tracks.firstIndex(of: track) else { return }
+        tracks.remove(at: index)
+        saveTracks()
+    }
+    
     func appendTrack(_ track: Track) {
         tracks.append(track)
         saveTracks()

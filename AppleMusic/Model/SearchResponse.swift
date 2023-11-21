@@ -12,7 +12,7 @@ struct SearchResponse: Decodable {
     var results: [Track]
 }
 
-struct Track: Codable, Identifiable {
+struct Track: Codable, Identifiable, Equatable {
     let id = UUID()
     var trackName: String
     var artistName: String

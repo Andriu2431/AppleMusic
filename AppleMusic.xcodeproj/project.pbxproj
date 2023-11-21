@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1617C3192AB8792400746CB9 /* TrackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1617C3182AB8792400746CB9 /* TrackModel.swift */; };
 		1637A4F32AA71F20002C2FE2 /* Nib + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1637A4F22AA71F20002C2FE2 /* Nib + Extension.swift */; };
 		1637A4F72AA9C41C002C2FE2 /* LibraryMusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1637A4F62AA9C41C002C2FE2 /* LibraryMusicView.swift */; };
 		1637A4F92AAA178B002C2FE2 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1637A4F82AAA178B002C2FE2 /* DataManager.swift */; };
@@ -21,7 +22,6 @@
 		16C4BA2B2A3771360034F7C1 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C4BA2A2A3771360034F7C1 /* SearchResponse.swift */; };
 		16C4BA4D2A388CDA0034F7C1 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C4BA4C2A388CDA0034F7C1 /* NetworkService.swift */; };
 		16C4BA542A38ACC50034F7C1 /* SearchMusicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C4BA532A38ACC50034F7C1 /* SearchMusicViewModel.swift */; };
-		16C4BA562A38ACD30034F7C1 /* LibraryMusicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C4BA552A38ACD30034F7C1 /* LibraryMusicViewModel.swift */; };
 		16C4BA582A38AEAB0034F7C1 /* SearchMusicViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16C4BA572A38AEAB0034F7C1 /* SearchMusicViewController.storyboard */; };
 		16C4BA5A2A38B11F0034F7C1 /* UIViewController + Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C4BA592A38B11F0034F7C1 /* UIViewController + Storyboard.swift */; };
 		16C4BA5F2A39CFCB0034F7C1 /* TrackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16C4BA5E2A39CFCB0034F7C1 /* TrackCell.xib */; };
@@ -39,6 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1617C3182AB8792400746CB9 /* TrackModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackModel.swift; sourceTree = "<group>"; };
 		1637A4F22AA71F20002C2FE2 /* Nib + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nib + Extension.swift"; sourceTree = "<group>"; };
 		1637A4F62AA9C41C002C2FE2 /* LibraryMusicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryMusicView.swift; sourceTree = "<group>"; };
 		1637A4F82AAA178B002C2FE2 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
@@ -54,7 +55,6 @@
 		16C4BA2A2A3771360034F7C1 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
 		16C4BA4C2A388CDA0034F7C1 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		16C4BA532A38ACC50034F7C1 /* SearchMusicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMusicViewModel.swift; sourceTree = "<group>"; };
-		16C4BA552A38ACD30034F7C1 /* LibraryMusicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryMusicViewModel.swift; sourceTree = "<group>"; };
 		16C4BA572A38AEAB0034F7C1 /* SearchMusicViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchMusicViewController.storyboard; sourceTree = "<group>"; };
 		16C4BA592A38B11F0034F7C1 /* UIViewController + Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Storyboard.swift"; sourceTree = "<group>"; };
 		16C4BA5E2A39CFCB0034F7C1 /* TrackCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackCell.xib; sourceTree = "<group>"; };
@@ -134,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				16C4BA2A2A3771360034F7C1 /* SearchResponse.swift */,
+				1617C3182AB8792400746CB9 /* TrackModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -152,7 +153,6 @@
 		16C4BA512A38AC4B0034F7C1 /* LibraryMusic */ = {
 			isa = PBXGroup;
 			children = (
-				16C4BA552A38ACD30034F7C1 /* LibraryMusicViewModel.swift */,
 				1637A4F62AA9C41C002C2FE2 /* LibraryMusicView.swift */,
 			);
 			path = LibraryMusic;
@@ -363,6 +363,7 @@
 				16C4BA642A39D01B0034F7C1 /* TrackCellViewModel.swift in Sources */,
 				16C4BA742A3B38DC0034F7C1 /* TrackDetailViewModelProtocol.swift in Sources */,
 				16C4BB382A41B9A90034F7C1 /* CustomSlider.swift in Sources */,
+				1617C3192AB8792400746CB9 /* TrackModel.swift in Sources */,
 				16C4BA692A39FA010034F7C1 /* FooterView.swift in Sources */,
 				16C4BA542A38ACC50034F7C1 /* SearchMusicViewModel.swift in Sources */,
 				16C4BA5A2A38B11F0034F7C1 /* UIViewController + Storyboard.swift in Sources */,
@@ -380,7 +381,6 @@
 				16C4BA052A36FD100034F7C1 /* SceneDelegate.swift in Sources */,
 				16C4BA6B2A3A11C00034F7C1 /* TrackDetailView.swift in Sources */,
 				16C4BA4D2A388CDA0034F7C1 /* NetworkService.swift in Sources */,
-				16C4BA562A38ACD30034F7C1 /* LibraryMusicViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

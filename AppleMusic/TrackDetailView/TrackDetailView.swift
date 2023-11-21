@@ -9,7 +9,7 @@ import UIKit
 import SDWebImage
 import AVKit
 
-protocol TrackMovingDelegate: AnyObject {
+protocol TrackMovingDelegate {
     func moveBackForPreviousTrack() -> TrackDetailViewModelProtocol?
     func moveForwardForPreviousTrack() -> TrackDetailViewModelProtocol?
 }
@@ -40,7 +40,7 @@ class TrackDetailView: UIView {
         }
     }
     
-    weak var delegate: TrackMovingDelegate?
+    var delegate: TrackMovingDelegate?
     weak var tabBarDelegate: MainTabBarControllerDelegate?
     
     private let player: AVPlayer = {
@@ -69,24 +69,20 @@ class TrackDetailView: UIView {
         trackImageView.sd_setImage(with: url)
         miniTrackImageView.sd_setImage(with: url)
         
-        DispatchQueue.global(qos: .userInteractive).async { [weak self] in
-            self?.playTrack(previewUrl: viewModel.previewUrl)
-        }
+        playTrack(previewUrl: viewModel.previewUrl)
         observePlayerCurruntTime()
     }
     
     private func playTrack(previewUrl: String?) {
         guard let url = URL(string: previewUrl ?? "") else { return }
-        
-        let playerItem = AVPlayerItem(url: url)
-        player.replaceCurrentItem(with: playerItem)
+            
+        player.replaceCurrentItem(with: AVPlayerItem(url: url))
         player.play()
-        DispatchQueue.main.async { [weak self] in
-            self?.player.volume = self?.volumeSlider.value ?? 0
-            self?.playPauseButton.setImage(UIImage(named: "pause"), for: .normal)
-            self?.miniPlayPauseButton.setImage(UIImage(named: "pause"), for: .normal)
-            self?.changeScaleImageView()
-        }
+        player.volume = self.volumeSlider.value
+        
+        playPauseButton.setImage(UIImage(named: "pause"), for: .normal)
+        miniPlayPauseButton.setImage(UIImage(named: "pause"), for: .normal)
+        changeScaleImageView()
     }
     
     private func changeScaleImageView() {
@@ -236,9 +232,18 @@ class TrackDetailView: UIView {
 }
 
 extension TrackDetailView: LibraryMusicViewDelegate {
-    
-    func muteMusic() {
-        self.volumeSlider.value = 0
-        self.player.volume = 0
+    var isMuteMusic: Bool {
+        get {
+            volumeSlider.value == 0
+        }
+        set {
+            if newValue == true {
+                volumeSlider.value = 0
+                player.volume = 0
+            } else {
+                volumeSlider.value = 0.7
+                player.volume = 0.7
+            }
+        }
     }
 }

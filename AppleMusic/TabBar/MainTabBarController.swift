@@ -9,6 +9,7 @@ import UIKit
 import SwiftUI
 
 protocol MainTabBarControllerDelegate: AnyObject {
+    func setTrackMovingDelegate(_ delegate: TrackMovingDelegate)
     func minimizeTrackDetailController()
     func maximizeTrackDetailController(viewModel: TrackDetailViewModelProtocol?)
 }
@@ -71,6 +72,10 @@ class MainTabBarController: UITabBarController {
 }
 
 extension MainTabBarController: MainTabBarControllerDelegate {
+    
+    func setTrackMovingDelegate(_ delegate: TrackMovingDelegate) {
+        self.trackDetailView.delegate = delegate
+    }
 
     func minimizeTrackDetailController() {
         maximizedTopAnchorConstraint.isActive = false

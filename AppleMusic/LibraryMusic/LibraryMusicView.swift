@@ -10,11 +10,15 @@ import URLImage
 import AVKit
 
 protocol LibraryMusicViewDelegate: AnyObject {
-    func muteMusic()
+    var isMuteMusic: Bool {get set}
 }
 
 struct LibraryMusicView: View {
     @ObservedObject var trackModel = TrackModel.shared
+    @State private var isShowingAllert = false
+    @State private var track: Track!
+    @State private var imageName = "speaker.wave.2.circle.fill"
+    
     weak var tabBarDelegate: MainTabBarControllerDelegate?
     weak var delegate: LibraryMusicViewDelegate?
     
@@ -25,6 +29,8 @@ struct LibraryMusicView: View {
                     HStack(spacing: 20) {
                         Button {
                             if let track = trackModel.tracks.first {
+                                self.track = track
+                                tabBarDelegate?.setTrackMovingDelegate(self)
                                 tabBarDelegate?.maximizeTrackDetailController(viewModel: TrackDetailViewModel(track: track))
                             }
                         } label: {
@@ -36,9 +42,15 @@ struct LibraryMusicView: View {
                         }
                         
                         Button {
-                            delegate?.muteMusic()
+                            if delegate?.isMuteMusic ?? false {
+                                imageName = "speaker.slash.circle.fill"
+                                delegate?.isMuteMusic = false
+                            } else {
+                                imageName = "speaker.wave.2.circle.fill"
+                                delegate?.isMuteMusic = true
+                            }
                         } label: {
-                            Image(systemName: "speaker.slash.fill")
+                            Image(systemName: imageName)
                                 .frame(width: geomerty.size.width / 2 - 10, height: 50)
                                 .tint(Color.init(#colorLiteral(red: 1, green: 0.1719063818, blue: 0.4505617023, alpha: 1)))
                                 .background(Color.init((#colorLiteral(red: 0.9531342387, green: 0.9490900636, blue: 0.9562709928, alpha: 1))))
@@ -50,19 +62,68 @@ struct LibraryMusicView: View {
                 Divider().padding(EdgeInsets(top: 15, leading: 15, bottom: 0, trailing: 15))
                 
                 List() {
-                    ForEach(trackModel.tracks) { track in
+                    ForEach(self.trackModel.tracks) { track in
                         LibraryCell(track: track)
+                            .gesture(
+                                LongPressGesture()
+                                    .onEnded { _ in
+                                        self.track = track
+                                        self.isShowingAllert = true
+                                    }
+                                    .simultaneously(with: TapGesture()
+                                        .onEnded { _ in
+                                            self.track = track
+                                            self.tabBarDelegate?.setTrackMovingDelegate(self)
+                                            self.tabBarDelegate?.maximizeTrackDetailController(viewModel: TrackDetailViewModel(track: track))
+                                        }))
                     }
                     .onDelete(perform: deleteSavedTrack(at:))
                 }
                 .listStyle(.insetGrouped)
             }
             .navigationTitle("Library")
+            .confirmationDialog("", isPresented: $isShowingAllert) {
+                Button("Delete", role: .destructive) {
+                    self.trackModel.removeTrack(track)
+                }
+            } message: {
+                Text("Are you sure you want to delete this track?")
+            }
         }
     }
     
     private func deleteSavedTrack(at offsets: IndexSet) {
-        trackModel.removeTrack(at: offsets)
+        self.trackModel.removeTrack(at: offsets)
+    }
+}
+
+extension LibraryMusicView: TrackMovingDelegate {
+    func moveBackForPreviousTrack() -> TrackDetailViewModelProtocol? {
+        guard let index = trackModel.tracks.firstIndex(of: track) else { return nil }
+        var nextTrack: Track
+        
+        if index - 1 == -1 {
+            nextTrack = trackModel.tracks[trackModel.tracks.count - 1]
+        } else {
+            nextTrack = trackModel.tracks[index - 1]
+        }
+        
+        self.track = nextTrack
+        return TrackDetailViewModel(track: nextTrack)
+    }
+    
+    func moveForwardForPreviousTrack() -> TrackDetailViewModelProtocol? {
+        guard let index = trackModel.tracks.firstIndex(of: track) else { return nil }
+        var nextTrack: Track
+        
+        if index + 1 == trackModel.tracks.count {
+            nextTrack = trackModel.tracks[0]
+        } else {
+            nextTrack = trackModel.tracks[index + 1]
+        }
+        
+        self.track = nextTrack
+        return TrackDetailViewModel(track: nextTrack)
     }
 }
 
